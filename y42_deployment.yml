@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: y42-app
+  name: y42-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: y42-app
+  template:
+    metadata:
+      labels:
+        app: y42-app
+    spec:
+      containers:
+      - image: y42-flask:v1
+        name: y42-flask
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 80 
